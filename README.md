@@ -1,7 +1,24 @@
 # GAN_MXNET
 
-## Very first experiment for the learning of GAN
+This tutorial is the implementation of animeGAN in MXNET from https://github.com/jayleicn/animeGAN
 
-Download the data
+To run the code:
 
-https://drive.google.com/drive/u/0/folders/1cl-lmAaKgN2Y6GoYER8J34BlbS4cDviM
+1.Download the rec data from google drive
+    https://drive.google.com/drive/u/0/folders/1cl-lmAaKgN2Y6GoYER8J34BlbS4cDviM
+    
+The detail code to generate .rec can be found in ./data/
+
+2. run the command under the root "python run_train"
+
+Useful links:
+    
+https://github.com/jayleicn/animeGAN
+
+https://github.com/apache/incubator-mxnet/tree/master/example/gan
+    
+https://github.com/ChuckTan123/ganhacks
+    
+https://github.com/carpedm20/DCGAN-tensorflow
+
+https://arxiv.org/abs/1511.06434

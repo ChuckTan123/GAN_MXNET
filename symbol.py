@@ -1,24 +1,25 @@
 import mxnet as mx 
 
+# use leak relu for G and D
 def get_generator(no_bias=True, fix_gamma=True, epsilon=1e-5 + 1e-12):
 
     rand = mx.sym.Variable('rand')
 
     g1 = mx.sym.Deconvolution(rand, name='g1', kernel=(4,4), num_filter=1024, no_bias=no_bias)
     gbn1 = mx.sym.BatchNorm(g1, name='gbn1', fix_gamma=fix_gamma, eps=epsilon)
-    gact1 = mx.sym.Activation(gbn1, name='gact1', act_type='relu')
+    gact1 = mx.sym.LeakyReLU(gbn1, name='gact1', act_type='leaky', slope=0.2)
 
     g2 = mx.sym.Deconvolution(gact1, name='g2', kernel=(4,4), stride=(2,2), pad=(1,1), num_filter=512, no_bias=no_bias)
     gbn2 = mx.sym.BatchNorm(g2, name='gbn2', fix_gamma=fix_gamma, eps=epsilon)
-    gact2 = mx.sym.Activation(gbn2, name='gact2', act_type='relu')
+    gact2 = mx.sym.LeakyReLU(gbn2, name='gact2', act_type='leaky', slope=0.2)
 
     g3 = mx.sym.Deconvolution(gact2, name='g3', kernel=(4,4), stride=(2,2), pad=(1,1), num_filter=256, no_bias=no_bias)
     gbn3 = mx.sym.BatchNorm(g3, name='gbn3', fix_gamma=fix_gamma, eps=epsilon)
-    gact3 = mx.sym.Activation(gbn3, name='gact3', act_type='relu')
+    gact3 = mx.sym.LeakyReLU(gbn3, name='gact3', act_type='leaky', slope=0.2)
 
     g4 = mx.sym.Deconvolution(gact3, name='g4', kernel=(4,4), stride=(2,2), pad=(1,1), num_filter=128, no_bias=no_bias)
     gbn4 = mx.sym.BatchNorm(g4, name='gbn4', fix_gamma=fix_gamma, eps=epsilon)
-    gact4 = mx.sym.Activation(gbn4, name='gact4', act_type='relu')
+    gact4 = mx.sym.LeakyReLU(gbn4, name='gact4', act_type='leaky', slope=0.2)
 
     g5 = mx.sym.Deconvolution(gact4, name='g5', kernel=(4,4), stride=(2,2), pad=(1,1), num_filter=3, no_bias=no_bias)
     generatorSymbol = mx.sym.Activation(g5, name='gact5', act_type='tanh')
