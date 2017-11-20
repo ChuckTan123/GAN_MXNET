@@ -11,6 +11,9 @@ The detail code to generate .rec can be found in ./data/
 
 2. run the command under the root "python run_train"
 
+The generated images at epoch 124 are like:
+
+![fake_sample_1](epoch124.png)
 Useful links:
     
 https://github.com/jayleicn/animeGAN
