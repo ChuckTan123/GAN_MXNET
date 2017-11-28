@@ -26,3 +26,6 @@ https://github.com/ChuckTan123/ganhacks
 https://github.com/carpedm20/DCGAN-tensorflow
 
 https://arxiv.org/abs/1511.06434
+
+Learn GAN:
+The review paper in 2017: https://arxiv.org/pdf/1711.05914.pdf
